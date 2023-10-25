@@ -3,6 +3,7 @@
 #include <string>
 #include <Windows.h>
 #include <stdio.h>
+#include <tlhelp32.h>
 
 using namespace std;
 
@@ -50,9 +51,13 @@ bool Bypass::Write(uintptr_t lpBaseAddress, void* lpBuffer, SIZE_T nSize, SIZE_T
 
 
 
+
+
+
 int main(){
+
     DWORD pid = 0;
-    cout << "Enter PID: ";
+    cout << "Enter Process ID: ";
     cin >> dec >> pid;
 
     Bypass* bypass = new Bypass();
@@ -62,17 +67,17 @@ int main(){
         return EXIT_FAILURE;
     }
 
-	// Prompting user for memory address to overwrite
+	// memory address to overwrite
 	uintptr_t memoryAddress = 0x0;
 	cout << "Memory address of the integer to overwrite (in hexadecimal): 0x";
 	cin >> hex >> memoryAddress;
 
-    // Prompting user for integer value to overwrite
+    // integer value to overwrite
 	int intToWrite = 0;
 	cout << "Integer to write (in decimal): ";
 	cin >> dec >> intToWrite;
  
-	// Overwriting the integer in the other process
+	// Overwrite integer in other process
 	if (!bypass->Write(memoryAddress, &intToWrite, sizeof(int))) {
 		cout << "WriteProcessMemory failed. GetLastError = " << dec << GetLastError() << endl;
 		system("pause");
