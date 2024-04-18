@@ -1,8 +1,9 @@
 # Generic-Cheat
 > C++ program for attaching and editing windows processes <br>
 
-Project dropped due to shift to Debian as main driver
-Loads data from structures to pull memory addresses and offsets
+## Project dropped due to shift to Debian as main OS
+
+### Loads data from structures to pull memory addresses and offsets
 
 ## Installation:
 ### VS Code
